@@ -27,54 +27,24 @@ ob_start(); //permet de mettre en temporisation du code qui sera utilisé plus t
         <th colspan = "2">Actions</th>
     </tr>
 
-        <!-- ma première ligne, avec mon premier livre -->
+    <?php //création d'une boucle for pour parcourir le tableau des livres
+    //utilisation de la fonction count() pour avoir la taille du tableau
+    for($i=0; $i <(count($livres));$i++) : ?>
+
+        <!-- Suppression de tous les livres pour ne garder que la structure d'un seul livre -->
     <tr>
-        <td class="align-middle"><img src="public/images/bleach.jpg" alt="" width="60px"></td>
-        <td class="align-middle">Bleach, tome 1</td>
-        <td class="align-middle">250</td>
+        <td class="align-middle"><img src="public/images/<?= $livres[$i]->getImage()?>" alt="" width="60px"></td>
+        <!-- $livre[$i] pour dire qu'au 1er tour de boucle, on a $l1, 
+        2eme tour on aura $l2 etc...  
+        On applique les fonctions que l'on veut appliquer pour récupérer les données que l'on veut-->
+        <td class="align-middle"><?= $livres[$i]->getTitre()?></td>
+        <td class="align-middle"><?= $livres[$i]->getNbPages()?></td>
         <td class="align-middle"><a href="" class="btn btn-warning">Modifier</a></td>
         <td class="align-middle"><a href="" class="btn btn-danger">Supprimer</a></td>
     </tr>
-   <!-- Mon deuxième livre -->
-    <tr>
-        <td class="align-middle"><img src="public/images/dbz.jpg" alt="" width="60px"></td>
-        <td class="align-middle">Dragon Ball, tome 1</td>
-        <td class="align-middle">250</td>
-        <td class="align-middle"><a href="" class="btn btn-warning">Modifier</a></td>
-        <td class="align-middle"><a href="" class="btn btn-danger">Supprimer</a></td>
-    </tr>
-    <!-- Mon troisième livre -->
-    <tr>
-        <td class="align-middle"><img src="public/images/mha.jpg" alt="" width="60px"></td>
-        <td class="align-middle">My Hero Academia, tome 1</td>
-        <td class="align-middle">250</td>
-        <td class="align-middle"><a href="" class="btn btn-warning">Modifier</a></td>
-        <td class="align-middle"><a href="" class="btn btn-danger">Supprimer</a></td>
-    </tr>
-    <!-- Mon quatrième livre -->
-    <tr>
-        <td class="align-middle"><img src="public/images/naruto.jpg" alt="" width="60px"></td>
-        <td class="align-middle">Naruto, tome 1</td>
-        <td class="align-middle">250</td>
-        <td class="align-middle"><a href="" class="btn btn-warning">Modifier</a></td>
-        <td class="align-middle"><a href="" class="btn btn-danger">Supprimer</a></td>
-    </tr>
-    <!-- Mon cinquième livre -->
-    <tr>
-        <td class="align-middle"><img src="public/images/op.jpg" alt="" width="60px"></td>
-        <td class="align-middle">One Piece, tome 1</td>
-        <td class="align-middle">250</td>
-        <td class="align-middle"><a href="" class="btn btn-warning">Modifier</a></td>
-        <td class="align-middle"><a href="" class="btn btn-danger">Supprimer</a></td>
-    </tr>
-    <!-- Mon sixième livre -->
-    <tr>
-        <td class="align-middle"><img src="public/images/ss.jpg" alt="" width="60px"></td>
-        <td class="align-middle">Saint Seiya, tome 1</td>
-        <td class="align-middle">250</td>
-        <td class="align-middle"><a href="" class="btn btn-warning">Modifier</a></td>
-        <td class="align-middle"><a href="" class="btn btn-danger">Supprimer</a></td>
-    </tr>
+    <!-- enfor permet d'arrêter la boucle for, en ayant de l'html au milieu -->
+    <?php endfor;  ?>
+  
      
 </table>
 <!-- Bouton ajouter -->
