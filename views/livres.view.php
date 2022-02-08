@@ -68,8 +68,9 @@ ob_start(); //permet de mettre en temporisation du code qui sera utilisé plus t
         <!-- $livre[$i] pour dire qu'au 1er tour de boucle, on a $l1, 
         2eme tour on aura $l2 etc...  
         On applique les fonctions que l'on veut appliquer pour récupérer les données que l'on veut-->
-        <td class="align-middle"><?= $livres[$i]->getTitre(); ?></a></td>
-        <td class="align-middle"><?= $livres[$i]->getTitre()?></td>
+
+        <!-- balise a href pour arriver aux détails quand on clic sur le titre -->
+        <td class="align-middle"><a href="<?= URL ?>livres/l/<?= $livres[$i]->getID(); ?>"><?= $livres[$i]->getTitre(); ?></a></td>
         <td class="align-middle"><?= $livres[$i]->getNbPages()?></td>
         <td class="align-middle"><a href="" class="btn btn-warning">Modifier</a></td>
         <td class="align-middle"><a href="" class="btn btn-danger">Supprimer</a></td>

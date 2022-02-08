@@ -21,6 +21,12 @@ class LivresController{
 
         require 'views/livres.view.php';
     }
+
+    public function afficherUnLivre($id){
+        $livre = $this ->livreManager->getLivreById($id);
+        //nouvelle vue pour afficher un livre spécifique en ayant cliquer sur un livre
+        require 'views/afficherLivre.view.php';
+    }
 }
 
 ?> 

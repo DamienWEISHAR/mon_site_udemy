@@ -42,7 +42,18 @@ class LivreManager extends Model {
             //ajout des livres créés dans la variable $l
             $this->ajoutLivre($l);
         }
-       
+    }
+
+    public function getLivreById($id){
+        //on parcourt le tableau de $livres
+        for ($i=0; $i < count($this->livres); $i++){
+            //comparaison de l'id du livre instancié (donc $this) avec l'id transféré en paramètre de la fonction
+            if ($this->livres[$i]->getId() === $id){
+                return $this->livres[$i];
+            }
+
+
+        }
     }
 
 
