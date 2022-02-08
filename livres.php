@@ -1,25 +1,32 @@
 <?php 
+// SUPPRESSION CAR APPEL PAR LivreManager
+// require_once 'Livre.class.php';
 
-require_once 'Livre.class.php';
-
-$l1 = new Livre (1,"Bleach", 250, "bleach.jpg");
-$l2 = new Livre (2,"Dragon Ball", 250, "dbz.jpg");
-$l3 = new Livre (3,"MHA", 250, "mha.jpg");
-$l4 = new Livre (1,"Nartuo", 250, "naruto.jpg");
-$l5 = new Livre (1,"One Piece", 250, "op.jpg");
-$l6 = new Livre (1,"Saint Seiya", 250, "ss.jpg");
+// SUPPRESSION CAR DEJA EN BDD et appel des fonctions nécessaires
+// $l1 = new Livre (1,"Bleach", 250, "bleach.jpg");
+// $l2 = new Livre (2,"Dragon Ball", 250, "dbz.jpg");
+// $l3 = new Livre (3,"MHA", 250, "mha.jpg");
+// $l4 = new Livre (1,"Nartuo", 250, "naruto.jpg");
+// $l5 = new Livre (1,"One Piece", 250, "op.jpg");
+// $l6 = new Livre (1,"Saint Seiya", 250, "ss.jpg");
 
 //suppression de $livres = [$l1, $l2, $l3, $l4, $l5, $l6]; car $livres est accessible par la classe Livre
 
+
 require_once 'LivreManager.class.php';
 $livreManager = new LivreManager; //on ne met pas les (), car pas de constructeur, on ne fait appel qu'à la classe LivreManager
-$livreManager-> ajoutLivre($l1); //appel de la fonction ajoutLivre, appliquée à la varibale $livreManager
-$livreManager-> ajoutLivre($l2);
-$livreManager-> ajoutLivre($l3);
-$livreManager-> ajoutLivre($l4);
-$livreManager-> ajoutLivre($l5);
-$livreManager-> ajoutLivre($l6);
+
+// SUPPRESSION CAR DEJA EN BDD et appel des fonctions nécessaires
+// $livreManager-> ajoutLivre($l1); //appel de la fonction ajoutLivre, appliquée à la varibale $livreManager
+// $livreManager-> ajoutLivre($l2);
+// $livreManager-> ajoutLivre($l3);
+// $livreManager-> ajoutLivre($l4);
+// $livreManager-> ajoutLivre($l5);
+// $livreManager-> ajoutLivre($l6);
 //$livreManager contient donc tous les livres maintenant
+
+//ici on teste si y a une connexion et si on affiche tous les livres 
+$livreManager->chargementLivres();
 
 
 ob_start(); //permet de mettre en temporisation du code qui sera utilisé plus tard
