@@ -82,7 +82,7 @@ ob_start(); //permet de mettre en temporisation du code qui sera utilisé plus t
      
 </table>
 <!-- Bouton ajouter -->
-<a href="" class="btn btn-success d-block">Ajouter</a>
+<a href="<?= URL ?>livres/a" class="btn btn-success d-block">Ajouter</a>
 
 <?php
 

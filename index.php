@@ -24,13 +24,15 @@ try{
                 if (empty($url[1])){
                     $livreController->afficherLivres();
                 }else if ($url[1] === "l"){
-                    echo $livreController->afficherUnLivre($url[2]);
+                    $livreController->afficherUnLivre($url[2]);
                 }else if ($url[1] === "a"){
-                    echo "ajouter un livre";
+                    $livreController->ajoutLivre();
                 }else if ($url[1] === "m"){
                     echo "modifier un livre";
                 }else if ($url[1] === "s"){
                     echo "supprimer un livre";
+                }else if ($url[1] === "av"){
+                    $livreController->ajoutLivreValidation();
                 }else{
                     throw new Exception ("la page n'existe pas");
                 }

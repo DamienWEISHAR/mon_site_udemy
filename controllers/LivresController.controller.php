@@ -15,10 +15,8 @@ class LivresController{
 
     //methodes
     public function afficherLivres(){
-
         //récupération de tous les livres, dispo dans la variables $livres, qui est dispo aussi dans la vue    
         $livres = $this->livreManager->getLivres();
-
         require 'views/livres.view.php';
     }
 
@@ -27,6 +25,19 @@ class LivresController{
         //nouvelle vue pour afficher un livre spécifique en ayant cliquer sur un livre
         require 'views/afficherLivre.view.php';
     }
+
+    public function ajoutLivre(){
+        require 'views/ajoutLivre.view.php';
+    }
+
+    public function ajoutLivreValidation(){
+        $file = $_FILES['image'];
+        
+
+
+    }
+
+
 }
 
 ?> 
