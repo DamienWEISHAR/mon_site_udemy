@@ -9,6 +9,8 @@ class Livre{
     private $nbPages;
     private $image;
 
+    //static = information disponible directement par la classe et pas par l'objet
+    public static $livres; //tableau contenant la liste des livres
 
     //constructeur
 
@@ -19,6 +21,9 @@ class Livre{
         $this->titre = $titre;
         $this->nbPages = $nbPages;
         $this->image = $image;
+
+        //remplissage de l'attribut static, [] pour rajouter à la fin du tableau $livres
+        self:: $livres[] = $this;
     }
 
 

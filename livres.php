@@ -9,7 +9,7 @@ $l4 = new Livre (1,"Nartuo", 250, "naruto.jpg");
 $l5 = new Livre (1,"One Piece", 250, "op.jpg");
 $l6 = new Livre (1,"Saint Seiya", 250, "ss.jpg");
 
-$livres = [$l1, $l2, $l3, $l4, $l5, $l6]; //tableau contenant tous les livres
+//suppression de $livres = [$l1, $l2, $l3, $l4, $l5, $l6]; car $livres est accessible par la classe Livre
 
 
 ob_start(); //permet de mettre en temporisation du code qui sera utilisé plus tard
@@ -27,18 +27,20 @@ ob_start(); //permet de mettre en temporisation du code qui sera utilisé plus t
         <th colspan = "2">Actions</th>
     </tr>
 
-    <?php //création d'une boucle for pour parcourir le tableau des livres
-    //utilisation de la fonction count() pour avoir la taille du tableau
-    for($i=0; $i <(count($livres));$i++) : ?>
+    <?php 
+        // création d'une boucle for pour parcourir le tableau des livres 
+        // utilisation de la fonction count() pour avoir la taille du tableau
+        // utilisation de la classe Livre :: pour appeler l'attribut static dont on a besoin
+    for($i=0; $i <(count(Livre::$livres));$i++) : ?>
 
         <!-- Suppression de tous les livres pour ne garder que la structure d'un seul livre -->
     <tr>
-        <td class="align-middle"><img src="public/images/<?= $livres[$i]->getImage()?>" alt="" width="60px"></td>
+        <td class="align-middle"><img src="public/images/<?= Livre::$livres[$i]->getImage()?>" alt="" width="60px"></td>
         <!-- $livre[$i] pour dire qu'au 1er tour de boucle, on a $l1, 
         2eme tour on aura $l2 etc...  
         On applique les fonctions que l'on veut appliquer pour récupérer les données que l'on veut-->
-        <td class="align-middle"><?= $livres[$i]->getTitre()?></td>
-        <td class="align-middle"><?= $livres[$i]->getNbPages()?></td>
+        <td class="align-middle"><?= Livre::$livres[$i]->getTitre()?></td>
+        <td class="align-middle"><?= Livre::$livres[$i]->getNbPages()?></td>
         <td class="align-middle"><a href="" class="btn btn-warning">Modifier</a></td>
         <td class="align-middle"><a href="" class="btn btn-danger">Supprimer</a></td>
     </tr>
