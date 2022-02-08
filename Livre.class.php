@@ -9,9 +9,10 @@ class Livre{
     private $nbPages;
     private $image;
 
-    //static = information disponible directement par la classe et pas par l'objet
-    public static $livres; //tableau contenant la liste des livres
 
+    //SUPPRESSION DE L'ATTRIBUT STATIC car il n'existe plus: public static $livres; 
+       
+ 
     //constructeur
 
     public function __construct($id, $titre, $nbPages, $image){
@@ -22,8 +23,8 @@ class Livre{
         $this->nbPages = $nbPages;
         $this->image = $image;
 
-        //remplissage de l'attribut static, [] pour rajouter à la fin du tableau $livres
-        self:: $livres[] = $this;
+        //SUPPRESSION DE L'ATTRIBUT STATIC car il n'existe plus, et donc l'appel self:: $livres[] = $this;
+        
     }
 
 
