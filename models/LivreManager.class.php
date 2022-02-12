@@ -70,16 +70,6 @@ class LivreManager extends Model {
             $livre = new Livre($this->getBdd()->lastInsertId(), $titre, $nbPages,$image);
             $this->ajoutLivre($livre);
         }
-<<<<<<< Updated upstream
-
-
-    }
-
-
-
-
-
-=======
     }
 
     public function suppressionLivreBd($id){
@@ -98,7 +88,6 @@ class LivreManager extends Model {
         }
         
     }
->>>>>>> Stashed changes
 }
 
 ?>

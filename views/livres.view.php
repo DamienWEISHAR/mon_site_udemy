@@ -73,16 +73,12 @@ ob_start(); //permet de mettre en temporisation du code qui sera utilisé plus t
         <td class="align-middle"><a href="<?= URL ?>livres/l/<?= $livres[$i]->getID(); ?>"><?= $livres[$i]->getTitre(); ?></a></td>
         <td class="align-middle"><?= $livres[$i]->getNbPages()?></td>
         <td class="align-middle"><a href="" class="btn btn-warning">Modifier</a></td>
-<<<<<<< Updated upstream
-        <td class="align-middle"><a href="" class="btn btn-danger">Supprimer</a></td>
-=======
         <td class="align-middle">
             <!-- création d'une popup dès qu'on clique sur Supprimer -->
             <form method="POST" action="<?= URL ?>livres/s/<?=$livres[$i]->getId();?>" onSubmit="return confirm('Voulez-vous vraiment supprimer ce livre?');" >
                 <button class="btn btn-danger" type="submit">Supprimer</button>
             </form>
         </td>
->>>>>>> Stashed changes
     </tr>
 
     <!-- endfor permet d'arrêter la boucle for, en ayant de l'html au milieu -->

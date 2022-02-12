@@ -24,21 +24,13 @@ try{
                 if (empty($url[1])){
                     $livreController->afficherLivres();
                 }else if ($url[1] === "l"){
-<<<<<<< Updated upstream
-                    $livreController->afficherUnLivre($url[2]);
-=======
                     $livreController->afficherLivre($url[2]);
->>>>>>> Stashed changes
                 }else if ($url[1] === "a"){
                     $livreController->ajoutLivre();
                 }else if ($url[1] === "m"){
                     echo "modifier un livre";
                 }else if ($url[1] === "s"){
-<<<<<<< Updated upstream
-                    echo "supprimer un livre";
-=======
                     $livreController->suppressionLivre($url[2]);
->>>>>>> Stashed changes
                 }else if ($url[1] === "av"){
                     $livreController->ajoutLivreValidation();
                 }else{
