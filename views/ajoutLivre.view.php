@@ -2,7 +2,7 @@
 ob_start(); //permet de mettre en temporisation du code qui sera utilisé plus tard
 ?> 
 <!-- enctype permet de récupérer les images uploadées sinon ça ne marche pas -->
-<form method="post" action="<?=URL?>livres/av" enctype="multipart/form-data" >
+<form method="POST" action="<?=URL?>livres/av" enctype="multipart/form-data" >
     <div class="form-group">
         <label for="titre">Titre : </label>
         <input type="text" class="form-control" id="titre" name="titre">

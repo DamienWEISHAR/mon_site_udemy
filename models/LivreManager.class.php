@@ -30,7 +30,7 @@ class LivreManager extends Model {
     }
     //charger des livres (par une requête SQL préparée)
     public function chargementLivres(){
-        $req = $this->getBdd()->prepare("SELECT * FROM livres");
+        $req = $this->getBdd()->prepare("SELECT * FROM livre");
         $req->execute();
         $mesLivres = $req->fetchAll(PDO::FETCH_ASSOC); //permet d'éviter les doublons, la variable $mesLivres est le tableau associatif contenant tous les livres
         $req->closeCursor();
@@ -55,6 +55,26 @@ class LivreManager extends Model {
 
         }
     }
+
+    public function ajoutLivreBd($titre, $nbPages,$image){
+        $req = 'INSERT INTO livre (titre, nbPages, image) VALUES (:titre, :nbPages, :image)';
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt -> bindValue(":titre", $titre);
+        $stmt -> bindValue(":nbPages", $nbPages);
+        $stmt -> bindValue(":image", $image);
+        $resultat = $stmt->execute();
+        $stmt->closeCursor();
+
+        //vérification si ma requête a bien fonctionné
+        if($resultat > 0){
+            $livre = new Livre($this->getBdd()->lastInsertId(), $titre, $nbPages,$image);
+            $this->ajoutLivre($livre);
+        }
+
+
+    }
+
+
 
 
 
