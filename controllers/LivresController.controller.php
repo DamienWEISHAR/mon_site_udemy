@@ -30,6 +30,11 @@ class LivresController{
         require 'views/ajoutLivre.view.php';
     }
 
+<<<<<<< Updated upstream
+=======
+  
+
+>>>>>>> Stashed changes
     public function ajoutLivreValidation(){
         $file = $_FILES['image'];
         $repertoire ="public/images/";
@@ -82,6 +87,7 @@ class LivresController{
         }
 
     }
+<<<<<<< Updated upstream
 
     private function ajoutImage($file, $dir){
         if(!isset($file['name']) || empty($file['name'])){
@@ -128,6 +134,18 @@ class LivresController{
     }
 
 
+=======
+    public function suppressionLivre($id){
+        //récupération de l'image
+        $nomImage = $this->livreManager->getLivreById($id)->getImage();
+        //suppression de l'image dans le répertoire
+        unlink("public/images/".$nomImage);
+        //suppression en bdd
+        $this->livreManager->suppressionLivreBd($id);
+        header('Location:'. URL ."livres");
+    }
+
+>>>>>>> Stashed changes
 }
 
 ?> 

@@ -70,6 +70,7 @@ class LivreManager extends Model {
             $livre = new Livre($this->getBdd()->lastInsertId(), $titre, $nbPages,$image);
             $this->ajoutLivre($livre);
         }
+<<<<<<< Updated upstream
 
 
     }
@@ -78,6 +79,26 @@ class LivreManager extends Model {
 
 
 
+=======
+    }
+
+    public function suppressionLivreBd($id){
+        $req='DELETE FROM livre WHERE id = :idLivre';
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue('idLivre',$id);
+        $resultat= $stmt->execute();
+        $stmt->closeCursor();
+
+        //requete a bien fonctionné?
+        if($resultat > 0){
+            //récupération du livre
+            $livre=$this->getLivreById($id);
+            //unset détruit la variable
+            unset($livre);
+        }
+        
+    }
+>>>>>>> Stashed changes
 }
 
 ?>
