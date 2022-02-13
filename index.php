@@ -28,11 +28,13 @@ try{
                 }else if ($url[1] === "a"){
                     $livreController->ajoutLivre();
                 }else if ($url[1] === "m"){
-                    echo "modifier un livre";
+                    $livreController->modificationLivre($url[2]);
                 }else if ($url[1] === "s"){
                     $livreController->suppressionLivre($url[2]);
                 }else if ($url[1] === "av"){
                     $livreController->ajoutLivreValidation();
+                }else if ($url[1] === "mv"){
+                    $livreController->modificationLivreValidation();
                 }else{
                     throw new Exception ("la page n'existe pas");
                 }
@@ -44,7 +46,8 @@ try{
     }
 
 }catch (Exception $e){
-    echo $e->getMessage();
+    $msg = $e->getMessage();
+    require "views/error.view.php";
 }
 
 

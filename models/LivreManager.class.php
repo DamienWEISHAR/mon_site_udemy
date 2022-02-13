@@ -22,12 +22,17 @@ class LivreManager extends Model {
     }
 
 
-    //methodes
-    
+    /**********************************************
+    *              METHODES
+    **********************************************/
+
     //ajouter des livres:
     public function ajoutLivre($livre){
         $this->livres[] = $livre; //ajout du livre instancié à la fin du tableau
     }
+    
+ /*********************************************** */
+
     //charger des livres (par une requête SQL préparée)
     public function chargementLivres(){
         $req = $this->getBdd()->prepare("SELECT * FROM livre");
@@ -44,6 +49,8 @@ class LivreManager extends Model {
         }
     }
 
+ /*********************************************** */
+
     public function getLivreById($id){
         //on parcourt le tableau de $livres
         for ($i=0; $i < count($this->livres); $i++){
@@ -51,10 +58,11 @@ class LivreManager extends Model {
             if ($this->livres[$i]->getId() === $id){
                 return $this->livres[$i];
             }
-
-
         }
+        throw new Exception ("Le livre n'existe pas!");
     }
+
+ /*********************************************** */
 
     public function ajoutLivreBd($titre, $nbPages,$image){
         $req = 'INSERT INTO livre (titre, nbPages, image) VALUES (:titre, :nbPages, :image)';
@@ -72,6 +80,8 @@ class LivreManager extends Model {
         }
     }
 
+/*********************************************** */
+
     public function suppressionLivreBd($id){
         $req='DELETE FROM livre WHERE id = :idLivre';
         $stmt = $this->getBdd()->prepare($req);
@@ -86,7 +96,30 @@ class LivreManager extends Model {
             //unset détruit la variable
             unset($livre);
         }
-        
+    }
+
+/*********************************************** */
+
+    public function modificationLivreBd($id, $titre, $nbPages, $image){
+        $req = "UPDATE livre SET titre = :titre, nbPages = :nbPages, image = :image WHERE id= :id";
+        $stmt = $this->getBdd()->prepare($req);
+        $stmt->bindValue(":id", $id);
+        $stmt->bindValue(":titre", $titre);
+        $stmt->bindValue(":nbPages", $nbPages);
+        $stmt->bindValue(":image", $image);
+        $resultat = $stmt->execute();
+        $stmt->closeCursor();
+
+        //vérification que la modification a bien été faite
+        if($resultat > 0){
+            //permet de mettre à jour dans la bdd
+            $this->getLivreById($id)->setTitre($titre);
+            $this->getLivreById($id)->setNbPages($nbPages);
+            $this->getLivreById($id)->setImage($image);
+
+        }
+
+
     }
 }
 

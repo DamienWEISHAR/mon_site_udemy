@@ -72,7 +72,7 @@ ob_start(); //permet de mettre en temporisation du code qui sera utilisé plus t
         <!-- balise a href pour arriver aux détails quand on clic sur le titre -->
         <td class="align-middle"><a href="<?= URL ?>livres/l/<?= $livres[$i]->getID(); ?>"><?= $livres[$i]->getTitre(); ?></a></td>
         <td class="align-middle"><?= $livres[$i]->getNbPages()?></td>
-        <td class="align-middle"><a href="" class="btn btn-warning">Modifier</a></td>
+        <td class="align-middle"><a href="<?= URL ?>livres/m/<?=$livres[$i]->getId(); ?>" class="btn btn-warning">Modifier</a></td>
         <td class="align-middle">
             <!-- création d'une popup dès qu'on clique sur Supprimer -->
             <form method="POST" action="<?= URL ?>livres/s/<?=$livres[$i]->getId();?>" onSubmit="return confirm('Voulez-vous vraiment supprimer ce livre?');" >

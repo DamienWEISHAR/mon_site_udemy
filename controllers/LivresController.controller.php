@@ -13,12 +13,18 @@ class LivresController{
         $this->livreManager->chargementLivres();
     }
 
-    //methodes
+    /**********************************************
+     *              METHODES
+     **********************************************/
+
+     
     public function afficherLivres(){
         //récupération de tous les livres, dispo dans la variables $livres, qui est dispo aussi dans la vue    
         $livres = $this->livreManager->getLivres();
         require 'views/livres.view.php';
     }
+
+/*********************************************** */
 
     public function afficherLivre($id){
         $livre = $this ->livreManager->getLivreById($id);
@@ -26,11 +32,13 @@ class LivresController{
         require 'views/afficherLivre.view.php';
     }
 
+/*********************************************** */
+
     public function ajoutLivre(){
         require 'views/ajoutLivre.view.php';
     }
 
-  
+ /*********************************************** */
 
     public function ajoutLivreValidation(){
         $file = $_FILES['image'];
@@ -39,6 +47,8 @@ class LivresController{
         $this->livreManager->ajoutLivreBd($_POST['titre'],$_POST['nbPages'],$nomImageAjoute);
         header('Location:' . URL ."livres");
     }
+
+ /*********************************************** */
 
     private function ajoutImage($file, $dir){
         if(!isset($file['name']) || empty($file['name'])){
@@ -84,6 +94,9 @@ class LivresController{
         }
 
     }
+
+ /*********************************************** */
+
     public function suppressionLivre($id){
         //récupération de l'image
         $nomImage = $this->livreManager->getLivreById($id)->getImage();
@@ -94,6 +107,37 @@ class LivresController{
         header('Location:'. URL ."livres");
     }
 
+ /*********************************************** */
+
+    public function modificationLivre($id){
+        //récupération de l'id du livre
+        $livre = $this->livreManager->getLivreById($id);
+        //affichage de la vue 
+        require "views/modifierLivre.view.php";
+
+    }
+
+ /*********************************************** */
+
+    public function modificationLivreValidation(){
+        //récupération de l'image que l'on veut modifier
+        $imageActuelle = $this->livreManager->getLivreById($_POST['identifiant'])->getImage();
+
+        //vérification si l'utilisateur a sélectionné une nouvelle image, ou pas
+        $file = $_FILES['image'];
+
+        if($file['size'] > 0){
+            unlink("public/images/".$imageActuelle);
+            //ces 2 lignes permettent l'ajout du livre dans le répertoire
+            $repertoire ="public/images/";
+            $nomImageToAdd= $this->ajoutImage($file, $repertoire);
+        }else{
+            //l'image à remplacer reste l'image que l'on a actuellement
+            $nomImageToAdd= $imageActuelle;
+        }
+        $this->livreManager->modificationLivreBd($_POST['identifiant'],$_POST['titre'],$_POST['nbPages'], $nomImageToAdd);
+        header('Location:'. URL ."livres");
+    }
 }
 
-?> 
+?>  
